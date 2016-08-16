@@ -738,8 +738,7 @@ func main() {
 	discord.AddHandler(onGuildCreate)
 	discord.AddHandler(onMessageCreate)
 	// adding to handle ping messages
-	discord.AddHandler(messageCreate)
-	log.Info("Sanity Check, loading ping handler")
+	discord.AddHandler(helpCreate)
 
 	// Get the account information.
 	u, err := discord.User("@me")
@@ -771,7 +770,7 @@ func main() {
 
 
 	// TESTING MESSAGE handlers ping pong
-	func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+	func helpCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		// Ignore all messages created by the bot itself
 		if m.Author.ID == BotID {
@@ -784,10 +783,11 @@ func main() {
 		}
 
 		// If the message is "pong" reply with "Ping!"
-		if m.Content == "!pongchen" {
-			_, _ = s.ChannelMessageSend(m.ChannelID, "Ping!")
+		if m.Content == "!chen" {
+			for _, coll := range COLLECTIONS {
+			_, _ = s.ChannelMessageSend(m.ChannelID, coll)
 
-	log.Info("Ready to pong back.")
+		}
 		}
 
 

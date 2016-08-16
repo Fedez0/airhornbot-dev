@@ -781,6 +781,11 @@ func main() {
 		// If the message is "pong" reply with "Ping!"
 		if m.Content == "!pongchen" {
 			_, _ = s.ChannelMessageSend(m.ChannelID, "Ping!")
+
+		// Wait for a signal to quit
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, os.Interrupt, os.Kill)
+		<-c
 		}
 
 	// Wait for a signal to quit

@@ -754,7 +754,7 @@ func main() {
 
 
 	// TESTING MESSAGE handlers ping pong
-	func messageCreate(s *discord, m *discord.MessageCreate) {
+	func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		// Ignore all messages created by the bot itself
 		if m.Author.ID == BotID {

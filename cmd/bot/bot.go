@@ -761,6 +761,11 @@ func main() {
 	// We're running!
 	log.Info("AIRHORNBOT is ready to horn it up.")
 
+	// Wait for a signal to quit
+	c := make(chan os.Signal, 1)
+	signal.Notify(c, os.Interrupt, os.Kill)
+	<-c
+	log.Info("This is the very end.")
 
 	}
 
@@ -785,9 +790,5 @@ func main() {
 	log.Info("Ready to pong back.")
 		}
 
-	// Wait for a signal to quit
-	c := make(chan os.Signal, 1)
-	signal.Notify(c, os.Interrupt, os.Kill)
-	<-c
-	log.Info("This is the very end.")
+
 }

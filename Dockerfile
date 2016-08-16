@@ -13,6 +13,6 @@ RUN apk update \
     && apk del git
 
 USER airhornbot
-WORKDIR "/airhorn/src/github.com/taylorsmcclure/airhornbot"
+WORKDIR "/airhorn/src/github.com/taylorsmcclure/airhornbot-dev"
 EXPOSE 6379
 ENTRYPOINT ["/airhorn/bin/bot"]

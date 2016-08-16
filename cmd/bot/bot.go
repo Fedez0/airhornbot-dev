@@ -750,6 +750,9 @@ func main() {
 	log.Info("AIRHORNBOT is ready to horn it up.")
 
 
+	}
+
+
 	// TESTING MESSAGE handlers ping pong
 	func messageCreate(s *discord, m *discord.MessageCreate) {
 
@@ -767,7 +770,6 @@ func main() {
 		if m.Content == "!pongchen" {
 			_, _ = s.ChannelMessageSend(m.ChannelID, "Ping!")
 		}
-	}
 
 	// Wait for a signal to quit
 	c := make(chan os.Signal, 1)

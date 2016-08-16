@@ -780,8 +780,7 @@ func main() {
 
 		// If the message is "ping" reply with "Pong!"
 		if m.Content == "!chenhelp" {
-			_, _ = s.ChannelMessageSend(m.ChannelID, "Hey go fuck yourself kid.
-				HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK ")
+			_, _ = s.ChannelMessageSend(m.ChannelID, "Hey go fuck yourself kid. HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK ")
 		}
 
 		// If the message is "pong" reply with "Ping!"

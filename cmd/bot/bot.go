@@ -37,6 +37,9 @@ var (
 
 	// Owner
 	OWNER string
+
+	// Bot ID to see if it is talking to itself
+	BotID  string
 )
 
 // Play represents an individual use of the !airhorn command
@@ -738,16 +741,6 @@ func main() {
 	discord.AddHandler(messageCreate)
 	log.Info("Sanity Check, loading ping handler")
 
-	// Get the account information.
-	u, err := discord.User("@me")
-	if err != nil {
-		fmt.Println("error obtaining account details,", err)
-	}
-
-	// Store the account ID for later use.
-	var BotID  string
-	BotID = u.ID
-
 	err = discord.Open()
 	if err != nil {
 		log.WithFields(log.Fields{
@@ -765,6 +758,12 @@ func main() {
 
 	// TESTING MESSAGE handlers ping pong
 	func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+
+		// Get the account information.
+		u, err := discord.User("@me")
+		if err != nil {
+			fmt.Println("error obtaining account details,", err)
+		}
 
 		// Ignore all messages created by the bot itself
 		if m.Author.ID == BotID {

@@ -737,6 +737,13 @@ func main() {
 	// adding to handle ping messages
 	discord.AddHandler(messageCreate)
 	log.Info("Sanity Check, loading ping handler")
+
+	// Get the account information.
+	u, err := discord.User("@me")
+	if err != nil {
+		fmt.Println("error obtaining account details,", err)
+	}
+
 	// Store the account ID for later use.
 	BotID = u.ID
 

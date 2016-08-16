@@ -742,7 +742,7 @@ func main() {
 	log.Info("Sanity Check, loading ping handler")
 
 	// Get the account information.
-	u, err := dg.User("@me")
+	u, err := discord.User("@me")
 	if err != nil {
 		fmt.Println("error obtaining account details,", err)
 	}

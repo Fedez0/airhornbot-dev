@@ -745,6 +745,7 @@ func main() {
 	}
 
 	// Store the account ID for later use.
+	var BotID  string
 	BotID = u.ID
 
 	err = discord.Open()

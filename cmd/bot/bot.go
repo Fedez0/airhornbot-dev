@@ -784,8 +784,8 @@ func main() {
 
 		// If the message is "pong" reply with "Ping!"
 		if m.Content == "!chen" {
-			for _, coll := range COLLECTIONS {
-			_, _ = s.ChannelMessageSend(m.ChannelID, coll)
+			for _, i := COLLECTIONS {
+			_, _ = s.ChannelMessageSend(m.ChannelID, i)
 
 		}
 		}

@@ -773,8 +773,9 @@ func main() {
 	func helpCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == "!chencommands" {
 		for _, i := range COLLECTIONS {
-			_, _ = s.ChannelMessageSend(m.ChannelID, i.Commands)
+			a := i.Commands
 			}
+		_, _ = s.ChannelMessageSend(m.ChannelID, a)
 		}
 
 		// Ignore all messages created by the bot itself

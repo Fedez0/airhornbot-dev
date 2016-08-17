@@ -776,9 +776,9 @@ func main() {
 				for _, i := range COLLECTIONS {
 					for _, j := range i.Commands {
 						a = append(a, j)
-							for _, h := range i.Sounds {
-								a = append(a, fmt.Sprint(h))
-							}
+							//for _, h := range i.Sounds {
+								//a = append(a, fmt.Sprint(h))
+							//}
 					}
 				}
 				_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ", "))

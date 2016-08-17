@@ -773,9 +773,9 @@ func main() {
 	func helpCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == "!chencommands" {
 		for _, i := range COLLECTIONS {
-				_, _ = s.ChannelMessageSend(m.ChannelID, i.Commands)
+				_, _ = s.ChannelMessageSend(m.ChannelID, fmt.Println(i.Commands))
 				for _, j := range i.Sounds {
-					_, _ = s.ChannelMessageSend(m.ChannelID, *j)
+					_, _ = s.ChannelMessageSend(m.ChannelID, fmt.Println(*j))
 				}
 			}
 		}

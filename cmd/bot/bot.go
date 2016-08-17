@@ -785,9 +785,9 @@ func main() {
 			}
 
 		// Ignore all messages created by the bot itself
-		//if m.Author.ID == BotID {
-			//return
-		//}
+		if m.Author.ID == BotID {
+			return
+		}
 
 
 }

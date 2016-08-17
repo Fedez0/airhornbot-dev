@@ -777,10 +777,10 @@ func main() {
 					for _, j := range i.Commands {
 						a = append(a, j)
 					}
-					_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ","))
 				}
+				_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ","))
 			}
-			
+
 		// Ignore all messages created by the bot itself
 		if m.Author.ID == BotID {
 			return

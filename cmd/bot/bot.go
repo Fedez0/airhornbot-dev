@@ -772,13 +772,15 @@ func main() {
 	// TESTING MESSAGE handlers ping pong
 	func helpCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == "!chencommands" {
-		for _, i := range COLLECTIONS {
-			new[i.Commands] = a
-			_, _ = s.ChannelMessageSend(m.ChannelID, a)
+		var a []string
+				for _, i := range COLLECTIONS {
+					for _, j := range i.Commands {
+						a = append(a, j)
+					}
+					_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ","))
+				}
 			}
-
-		}
-
+			
 		// Ignore all messages created by the bot itself
 		if m.Author.ID == BotID {
 			return

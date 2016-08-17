@@ -769,9 +769,9 @@ func main() {
 	}
 
 
-	// TESTING MESSAGE handlers ping pong
+	// chen help funciton for commands
 	func helpCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if m.Content == "!chencommands" {
+	if m.Content == "!chenhelp" {
 		var a []string
 				for _, i := range COLLECTIONS {
 					for _, j := range i.Commands {
@@ -785,13 +785,9 @@ func main() {
 			}
 
 		// Ignore all messages created by the bot itself
-		if m.Author.ID == BotID {
-			return
-		}
+		//if m.Author.ID == BotID {
+			//return
+		//}
 
-		// If the message is "ping" reply with "Pong!"
-		if m.Content == "!chenhelp" {
-			_, _ = s.ChannelMessageSend(m.ChannelID, "Hey go fuck yourself kid. HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK HONK ")
-		}
 
 }

@@ -787,7 +787,7 @@ func main() {
 		if m.Content == "!chenrestart" {
 			// This kills the chen
 			c := make(chan os.Signal, 1)
-			signal.Notify(c, os.Interrupt, os.Kill)
+			//signal.Notify(c, os.Interrupt, os.Kill)
 			<-c
 			log.Info("This is the very end.")
 		}

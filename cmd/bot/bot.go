@@ -760,15 +760,6 @@ func main() {
 	// We're running!
 	log.Info("AIRHORNBOT is ready to horn it up.")
 
-	// Wait for a signal to quit
-	c := make(chan os.Signal, 1)
-	signal.Notify(c, os.Interrupt, os.Kill)
-	<-c
-	log.Info("This is the very end.")
-
-	}
-
-
 	// chen help funciton for commands
 	func customMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Content == "!chenhelp" {
@@ -786,10 +777,8 @@ func main() {
 
 		if m.Content == "!chenrestart" {
 			// This kills the chen
-			c := make(chan os.Signal, 1)
-			//signal.Notify(c, os.Interrupt, os.Kill)
-			<-c
-			log.Info("This is the very end.")
+			discord.Stop()
+			log.Info("Chen was restarted by command")
 		}
 
 		// Ignore all messages created by the bot itself
@@ -797,5 +786,13 @@ func main() {
 			return
 		}
 
+
+}
+
+// Wait for a signal to quit
+c := make(chan os.Signal, 1)
+signal.Notify(c, os.Interrupt, os.Kill)
+<-c
+log.Info("This is the very end.")
 
 }

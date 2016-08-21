@@ -798,7 +798,6 @@ if m.Content == "!chenhelp" {
 			}).Fatal("Failed to create discord websocket connection")
 			return
 		}
-	}
 
 		log.Info("Chen was restarted by command")
 	}
@@ -807,6 +806,4 @@ if m.Content == "!chenhelp" {
 	if m.Author.ID == BotID {
 		return
 	}
-
-
 }

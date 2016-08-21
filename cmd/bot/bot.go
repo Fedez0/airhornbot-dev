@@ -772,6 +772,15 @@ log.Info("This is the very end.")
 
 // chen help funciton for commands
 func customMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+	var (
+		Token      = flag.String("t", "", "Discord Authentication Token")
+		Redis      = flag.String("r", "", "Redis Connection String")
+		Shard      = flag.String("s", "", "Shard ID")
+		ShardCount = flag.String("c", "", "Number of shards")
+		Owner      = flag.String("o", "", "Owner ID")
+		err        error
+	)
+
 if m.Content == "!chenhelp" {
 	var a []string
 			for _, i := range COLLECTIONS {
@@ -786,24 +795,22 @@ if m.Content == "!chenhelp" {
 		}
 
 	if m.Content == "!chenrestart" {
-		var Token  = flag.String("t", "", "Discord Authentication Token")
-
 		// This kills the chen
 		s.Close()
 		time.Sleep(3)
 		// Create a discord session
 		log.Info("Starting discord session...")
-		discord, error = discordgo.New(*Token)
-		if error != nil {
+		discord, err = discordgo.New(*Token)
+		if err != nil {
 			log.WithFields(log.Fields{
-				"error": error,
+				"error": err,
 			}).Fatal("Failed to create discord session")
 			return
 		}
-		error = s.Open()
-		if error != nil {
+		err = s.Open()
+		if err != nil {
 			log.WithFields(log.Fields{
-				"error": error,
+				"error": err,
 			}).Fatal("Failed to create discord websocket connection")
 			return
 		}

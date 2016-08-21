@@ -788,7 +788,7 @@ if m.Content == "!chenhelp" {
 	if m.Content == "!chenrestart" {
 		// This kills the chen
 		discord.Close()
-		time(3)
+		time.Sleep(3)
 		err = discord.Open()
 		if err != nil {
 			log.WithFields(log.Fields{

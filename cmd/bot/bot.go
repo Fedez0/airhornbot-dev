@@ -789,6 +789,15 @@ if m.Content == "!chenhelp" {
 		// This kills the chen
 		s.Close()
 		time.Sleep(3)
+		// Create a discord session
+		log.Info("Starting discord session...")
+		discord, err = discordgo.New(*Token)
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": err,
+			}).Fatal("Failed to create discord session")
+			return
+		}
 		err = s.Open()
 		if err != nil {
 			log.WithFields(log.Fields{

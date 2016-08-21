@@ -773,7 +773,6 @@ log.Info("This is the very end.")
 // chen help funciton for commands
 func customMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	var (
-		Token      = flag.String("t", "", "Discord Authentication Token")
 		err        error
 	)
 
@@ -792,24 +791,14 @@ if m.Content == "!chenhelp" {
 
 	if m.Content == "!chenrestart" {
 		// This kills the chen
-		s.Close()
-		time.Sleep(3)
-		// Create a discord session
-		log.Info("Starting discord session...")
-		discord, err = discordgo.New(*Token)
-		if err != nil {
-			log.WithFields(log.Fields{
-				"error": err,
-			}).Fatal("Failed to create discord session")
-			return
-		}
-		err = s.Open()
+		err = discord.Close()
 		if err != nil {
 			log.WithFields(log.Fields{
 				"error": err,
 			}).Fatal("Failed to create discord websocket connection")
 			return
 		}
+	}
 
 		log.Info("Chen was restarted by command")
 	}

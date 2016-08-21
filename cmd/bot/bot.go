@@ -786,13 +786,15 @@ if m.Content == "!chenhelp" {
 		}
 
 	if m.Content == "!chenrestart" {
+		var Token  = flag.String("t", "", "Discord Authentication Token")
+
 		// This kills the chen
 		s.Close()
 		time.Sleep(3)
 		// Create a discord session
 		log.Info("Starting discord session...")
 		discord, error = discordgo.New(*Token)
-		if err != nil {
+		if error != nil {
 			log.WithFields(log.Fields{
 				"error": error,
 			}).Fatal("Failed to create discord session")

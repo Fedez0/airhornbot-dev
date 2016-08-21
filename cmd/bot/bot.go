@@ -777,7 +777,16 @@ func main() {
 
 		if m.Content == "!chenrestart" {
 			// This kills the chen
-			discord.Stop()
+			discord.Close()
+			time(3)
+			err = discord.Open()
+			if err != nil {
+				log.WithFields(log.Fields{
+					"error": err,
+				}).Fatal("Failed to create discord websocket connection")
+				return
+			}
+
 			log.Info("Chen was restarted by command")
 		}
 

@@ -760,48 +760,50 @@ func main() {
 	// We're running!
 	log.Info("AIRHORNBOT is ready to horn it up.")
 
-	// chen help funciton for commands
-	func customMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
-	if m.Content == "!chenhelp" {
-		var a []string
-				for _, i := range COLLECTIONS {
-					for _, j := range i.Commands {
-						a = append(a, j)
-							//for _, h := range i.Sounds {
-								//a = append(a, fmt.Sprint(h))
-							//}
-					}
-				}
-				_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ", "))
-			}
 
-		if m.Content == "!chenrestart" {
-			// This kills the chen
-			discord.Close()
-			time(3)
-			err = discord.Open()
-			if err != nil {
-				log.WithFields(log.Fields{
-					"error": err,
-				}).Fatal("Failed to create discord websocket connection")
-				return
-			}
-
-			log.Info("Chen was restarted by command")
-		}
-
-		// Ignore all messages created by the bot itself
-		if m.Author.ID == BotID {
-			return
-		}
-
-
-}
 
 // Wait for a signal to quit
 c := make(chan os.Signal, 1)
 signal.Notify(c, os.Interrupt, os.Kill)
 <-c
 log.Info("This is the very end.")
+
+}
+
+// chen help funciton for commands
+func customMessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
+if m.Content == "!chenhelp" {
+	var a []string
+			for _, i := range COLLECTIONS {
+				for _, j := range i.Commands {
+					a = append(a, j)
+						//for _, h := range i.Sounds {
+							//a = append(a, fmt.Sprint(h))
+						//}
+				}
+			}
+			_, _ = s.ChannelMessageSend(m.ChannelID, strings.Join(a, ", "))
+		}
+
+	if m.Content == "!chenrestart" {
+		// This kills the chen
+		discord.Close()
+		time(3)
+		err = discord.Open()
+		if err != nil {
+			log.WithFields(log.Fields{
+				"error": err,
+			}).Fatal("Failed to create discord websocket connection")
+			return
+		}
+
+		log.Info("Chen was restarted by command")
+	}
+
+	// Ignore all messages created by the bot itself
+	if m.Author.ID == BotID {
+		return
+	}
+
 
 }
